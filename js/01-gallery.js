@@ -15,10 +15,8 @@ gallery.insertAdjacentHTML('beforeend', galleryImg);
 gallery.addEventListener("click", (event) => {
     event.preventDefault();
     const bigPictureSource = event.target.getAttribute('data-source');
-    const actualBigPicture = basicLightbox.create(`
-		<img width="1400" height="900" src="${bigPictureSource}">
-	`);
-    actualBigPicture.show();
+    basicLightbox.create(`
+		<img width="1400" height="900" src="${bigPictureSource}">`).show();
 });
 
 gallery.addEventListener("keydown", (event) => {
