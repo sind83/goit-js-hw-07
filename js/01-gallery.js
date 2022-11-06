@@ -15,7 +15,7 @@ gallery.insertAdjacentHTML('beforeend', galleryImg);
 
 gallery.addEventListener("click", (event) => {
     event.preventDefault();
-    event.stopImmediatePropagation();
+    //event.stopImmediatePropagation();
     const properImg = event.target.nodeName;
     if(properImg!== 'IMG') return; 
     const bigPictureSource = event.target.getAttribute('data-source');
