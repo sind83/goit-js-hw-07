@@ -7,16 +7,20 @@ const gallery = document.querySelector("div.gallery");
 
 const galleryImg = galleryItems.map((picture) => `<div class="gallery__item">
 <a class="gallery__link" href=${picture.original}>
-<img class="gallery__image" src=${picture.preview} data-source=${picture.original} alt=${picture.description}/>
+<img class="gallery__image" src=${picture.preview} 
+data-source=${picture.original} alt=${picture.description}/>
 </a></div>`).join("");
 
 gallery.insertAdjacentHTML('beforeend', galleryImg);
 
 gallery.addEventListener("click", (event) => {
     event.preventDefault();
+    event.stopImmediatePropagation();
+    const properImg = event.target.nodeName;
+    if(properImg!== 'IMG') return; 
     const bigPictureSource = event.target.getAttribute('data-source');
     basicLightbox.create(`
-		<img width="1400" height="900" src="${bigPictureSource}">`).show();
+		<img src="${bigPictureSource}">`).show();
 });
 
 gallery.addEventListener("keydown", (event) => {
